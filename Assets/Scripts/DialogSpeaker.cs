@@ -4,10 +4,16 @@ using System.Collections;
 [RequireComponent(typeof(CircleCollider2D))]
 public class DialogSpeaker : MonoBehaviour
 {
-    [SerializeField] private string dialog;
+	[SerializeField] Character ownerCharacter;
+    [SerializeField] string dialog;
 
-    void Interact()
+    void Interact(GameObject sender)
     {
-        Debug.Log(dialog);
+		Character senderCharacter = sender.GetComponent<Character>();
+
+		if (senderCharacter)
+		{
+			DialogManager.Instance.ShowDialog(ownerCharacter, dialog);
+		}
     }
 }
