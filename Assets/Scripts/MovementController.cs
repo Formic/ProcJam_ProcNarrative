@@ -15,6 +15,12 @@ public class MovementController : MonoBehaviour
 
     void ProcessInput()
     {
+		if (Game.Instance.Mode != GameMode.Running)
+		{
+			rigidbody2D.velocity = Vector2.zero;
+			return;
+		}
+
         rigidbody2D.velocity = InputDirection * Movespeed;
     }
 }

@@ -9,6 +9,9 @@ public class DialogSpeaker : MonoBehaviour
 
     void Interact(GameObject sender)
     {
+		if (Game.Instance.Mode != GameMode.Running)
+			return;
+
 		Character senderCharacter = sender.GetComponent<Character>();
 
 		if (senderCharacter)
